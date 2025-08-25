@@ -4,13 +4,13 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git url: 'https://github.com/Eranna69/New-curd-operations.git', branch: 'main'      
+        git url: 'https://github.com/Eranna69/New-curd-operations.git', branch: 'main'
       }
     }
 
     stage('Install Frontend') {
       steps {
-        dir('frontend/my-app') {
+        dir('Frontend/my-app') {
           script {
             if (isUnix()) {
               sh 'npm install'
@@ -24,7 +24,7 @@ pipeline {
 
     stage('Build Frontend') {
       steps {
-        dir('frontend/my-app') {
+        dir('Frontend/my-app') {
           script {
             if (isUnix()) {
               sh 'npm run build'
