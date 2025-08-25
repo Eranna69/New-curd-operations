@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git 'https://github.com/Eranna69/New-curd-operations/new/main.git'
+        git url: 'https://github.com/Eranna69/New-curd-operations.git', branch: 'main'      
       }
     }
 
