@@ -10,7 +10,7 @@ pipeline {
 
     stage('Install Frontend') {
       steps {
-        dir('frontend') {
+        dir('frontend/my-app') {
           script {
             if (isUnix()) {
               sh 'npm install'
@@ -24,7 +24,7 @@ pipeline {
 
     stage('Build Frontend') {
       steps {
-        dir('frontend') {
+        dir('frontend/my-app') {
           script {
             if (isUnix()) {
               sh 'npm run build'
