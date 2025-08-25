@@ -11,7 +11,13 @@ pipeline {
     stage('Install Frontend') {
       steps {
         dir('frontend') {
-          sh 'npm install'
+          script {
+            if (isUnix()) {
+              sh 'npm install'
+            } else {
+              bat 'npm install'
+            }
+          }
         }
       }
     }
@@ -19,7 +25,13 @@ pipeline {
     stage('Build Frontend') {
       steps {
         dir('frontend') {
-          sh 'npm run build'
+          script {
+            if (isUnix()) {
+              sh 'npm run build'
+            } else {
+              bat 'npm run build'
+            }
+          }
         }
       }
     }
@@ -27,7 +39,13 @@ pipeline {
     stage('Install Backend') {
       steps {
         dir('backend') {
-          sh 'npm install'
+          script {
+            if (isUnix()) {
+              sh 'npm install'
+            } else {
+              bat 'npm install'
+            }
+          }
         }
       }
     }
@@ -35,7 +53,13 @@ pipeline {
     stage('Run Backend Tests') {
       steps {
         dir('backend') {
-          sh 'npm test || echo "No tests found"'
+          script {
+            if (isUnix()) {
+              sh 'npm test || echo "No tests found"'
+            } else {
+              bat 'npm test || echo No tests found'
+            }
+          }
         }
       }
     }
