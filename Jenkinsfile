@@ -55,9 +55,11 @@ pipeline {
         dir('backend') {
           script {
             if (isUnix()) {
-              sh 'npm test || echo "No tests found"'
+              // Run tests; if they fail, continue without failing the pipeline
+              sh 'npm test || true'
             } else {
-              bat 'npm test || echo No tests found'
+              // Same for Windows batch
+              bat 'npm test || exit 0'
             }
           }
         }
